@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug (Ninja, tests on)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON",
+        "CPP_PLATFORMDIRS_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON",
+        "CPP_PLATFORMDIRS_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "asan",
+      "displayName": "ASan+UBSan (Ninja, tests on)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/asan",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "ASan",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "tsan",
+      "displayName": "TSan (Ninja, tests on)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/tsan",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "TSan",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Release (Windows, VS 2022 ClangCL, vcpkg static)",
+      "generator": "Visual Studio 17 2022",
+      "toolset": "ClangCL",
+      "binaryDir": "${sourceDir}/build/windows-release",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-static",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON",
+        "CPP_PLATFORMDIRS_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "Release (macOS, Xcode)",
+      "generator": "Xcode",
+      "binaryDir": "${sourceDir}/build/macos-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPP_PLATFORMDIRS_BUILD_TESTS": "ON",
+        "CPP_PLATFORMDIRS_BUILD_EXAMPLES": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "debug", "configurePreset": "debug" },
+    { "name": "release", "configurePreset": "release" },
+    { "name": "asan", "configurePreset": "asan" },
+    { "name": "tsan", "configurePreset": "tsan" },
+    { "name": "windows-release", "configurePreset": "windows-release", "configuration": "Release" },
+    { "name": "macos-release", "configurePreset": "macos-release", "configuration": "Release" }
+  ],
+  "testPresets": [
+    { "name": "debug", "configurePreset": "debug", "output": { "outputOnFailure": true } },
+    { "name": "release", "configurePreset": "release", "output": { "outputOnFailure": true } },
+    { "name": "asan", "configurePreset": "asan", "output": { "outputOnFailure": true } },
+    { "name": "tsan", "configurePreset": "tsan", "output": { "outputOnFailure": true } },
+    { "name": "windows-release", "configurePreset": "windows-release", "configuration": "Release", "output": { "outputOnFailure": true } },
+    { "name": "macos-release", "configurePreset": "macos-release", "configuration": "Release", "output": { "outputOnFailure": true } }
+  ]
+}

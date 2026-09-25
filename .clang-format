@@ -1,0 +1,56 @@
+# This file is part of the cpp-platformdirs Project.
+# License: GPL-3.0-or-later. Contact: cpp-platformdirs-project@trinity2k.net
+#
+---
+Language: Cpp
+BasedOnStyle: LLVM
+Standard: Latest
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+AccessModifierOffset: -4
+PointerAlignment: Left
+ReferenceAlignment: Left
+QualifierAlignment: Left
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: Yes
+InsertBraces: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: true
+BinPackArguments: true
+BinPackParameters: true
+BreakConstructorInitializers: BeforeColon
+IndentCaseLabels: false
+NamespaceIndentation: None
+SpaceBeforeParens: ControlStatements
+MaxEmptyLinesToKeep: 1
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<platformdirs/'
+    Priority: 1
+  - Regex: '^"'
+    Priority: 2
+  - Regex: '^<gtest/'
+    Priority: 3
+  - Regex: '^<(windows|knownfolders|shlobj|pwd|unistd|sys/)'
+    Priority: 4
+  - Regex: '^<.*>'
+    Priority: 5
+SortIncludes: CaseSensitive

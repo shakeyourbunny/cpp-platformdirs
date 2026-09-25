@@ -1,0 +1,9 @@
+prefix=${pcfiledir}/@PLATFORMDIRS_PC_TO_PREFIX@
+libdir=@PLATFORMDIRS_PC_LIBDIR@
+includedir=@PLATFORMDIRS_PC_INCLUDEDIR@
+
+Name: cpp-platformdirs
+Description: @PROJECT_DESCRIPTION@
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lplatformdirs
+Cflags: -I${includedir}

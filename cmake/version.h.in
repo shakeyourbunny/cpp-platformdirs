@@ -1,0 +1,21 @@
+// This file is part of the cpp-platformdirs Project.
+// License: GPL-3.0-or-later. Contact: cpp-platformdirs-project@trinity2k.net
+//
+// Generated from cmake/version.h.in by CMake. Do not edit the copy.
+
+#ifndef PLATFORMDIRS_VERSION_H
+#define PLATFORMDIRS_VERSION_H
+
+#include <string_view>
+
+namespace platformdirs {
+
+constexpr std::string_view version = "@PROJECT_VERSION@";
+
+// The product number of this library in its publisher's catalogue.
+// Empty when the build was configured without one.
+constexpr std::string_view part_number = "@CPP_PLATFORMDIRS_PART_NUMBER@";
+
+} // namespace platformdirs
+
+#endif // PLATFORMDIRS_VERSION_H

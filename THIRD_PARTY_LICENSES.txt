@@ -1,0 +1,41 @@
+Third-party software and references used by cpp-platformdirs
+=============================================================
+
+cpp-platformdirs itself is licensed under GPL-3.0-or-later (see LICENSE).
+
+No third-party code is compiled into the library. The items below are
+build-time test dependencies and the specifications the rules follow.
+
+
+GoogleTest
+----------
+Used by:      the unit tests only (CPP_PLATFORMDIRS_BUILD_TESTS)
+Source:       https://github.com/google/googletest
+License:      BSD-3-Clause
+Copyright:    Google Inc.
+
+
+platformdirs (Python)
+---------------------
+Role:         the API reference. The directory names, the option
+              semantics and the platform rules of this library follow
+              the Python platformdirs project so that programs in both
+              languages agree on where files go. No code was copied;
+              the rules were reimplemented from the documented
+              behaviour and the published source was read as a
+              specification. Deliberate differences are listed in the
+              README.
+Source:       https://github.com/tox-dev/platformdirs
+License:      MIT
+Copyright:    the platformdirs contributors
+
+
+Specifications consulted
+------------------------
+XDG Base Directory Specification, freedesktop.org
+    https://specifications.freedesktop.org/basedir-spec/latest/
+xdg-user-dirs (user-dirs.dirs format), freedesktop.org
+    https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
+KNOWNFOLDERID reference and "Naming Files, Paths, and Namespaces",
+    Microsoft Learn
+File System Programming Guide, macOS directories, Apple

@@ -1,0 +1,6 @@
+# This file is part of the cpp-platformdirs Project.
+# License: GPL-3.0-or-later. Contact: cpp-platformdirs-project@trinity2k.net
+#
+
+@PACKAGE_INIT@
+include("${CMAKE_CURRENT_LIST_DIR}/cpp-platformdirsTargets.cmake")

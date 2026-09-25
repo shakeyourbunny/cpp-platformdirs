@@ -1,0 +1,9 @@
+build/
+.cache/
+compile_commands.json
+CMakeUserPresets.json
+.workspace/
+.sessions/
+
+# Internal design and planning notes stay out of the public repository.
+cpp-platformdirs-developer-docs/

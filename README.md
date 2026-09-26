@@ -184,15 +184,16 @@ twenty scenarios through Python platformdirs and compares every
 answer, so the two libraries cannot drift apart unnoticed. Presets
 `asan` and `tsan` build the suite under the sanitizers.
 
-The Windows and macOS rules are covered by those tests on every host;
-the native sources for Windows have been built and run on Windows, the
-macOS ones have not yet run on a Mac.
+The Windows and macOS rules are covered by those tests on every host.
+The suite has been built and run natively on Linux, FreeBSD and
+Windows; the macOS sources have not yet run on a Mac.
 
 ## License
 
 GPL-3.0-or-later. See LICENSE for the full text and
 THIRD_PARTY_LICENSES.txt for the test dependency and the references
-the rules follow.
+the rules follow. Product number SJ-PKG-0100; `show_dirs --version`
+prints the dated form of the release you have.
 
 ---
 cpp-platformdirs has been written with the help of tooled assistance, but has been

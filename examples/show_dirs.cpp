@@ -56,7 +56,7 @@ std::optional<platformdirs::Platform> parse_platform(std::string_view name)
     return std::nullopt;
 }
 
-void print(std::string_view name, const platformdirs::Result<platformdirs::Path>& r)
+void show(std::string_view name, const platformdirs::Result<platformdirs::Path>& r)
 {
     std::cout << name << ": ";
     if (r) {
@@ -66,7 +66,7 @@ void print(std::string_view name, const platformdirs::Result<platformdirs::Path>
     }
 }
 
-void print(std::string_view name, const platformdirs::Result<platformdirs::PathList>& r)
+void show(std::string_view name, const platformdirs::Result<platformdirs::PathList>& r)
 {
     std::cout << name << ": ";
     if (!r) {
@@ -143,34 +143,34 @@ int main(int argc, char** argv)
     const platformdirs::Dirs& d = *dirs;
 
     std::cout << "platform: " << platformdirs::platform_name(options.platform) << '\n';
-    print("user_data_dir", d.user_data_dir());
-    print("user_config_dir", d.user_config_dir());
-    print("user_cache_dir", d.user_cache_dir());
-    print("user_state_dir", d.user_state_dir());
-    print("user_log_dir", d.user_log_dir());
-    print("user_runtime_dir", d.user_runtime_dir());
-    print("user_preference_dir", d.user_preference_dir());
-    print("user_bin_dir", d.user_bin_dir());
-    print("user_applications_dir", d.user_applications_dir());
-    print("user_fonts_dir", d.user_fonts_dir());
-    print("user_documents_dir", d.user_documents_dir());
-    print("user_downloads_dir", d.user_downloads_dir());
-    print("user_pictures_dir", d.user_pictures_dir());
-    print("user_videos_dir", d.user_videos_dir());
-    print("user_music_dir", d.user_music_dir());
-    print("user_desktop_dir", d.user_desktop_dir());
-    print("user_projects_dir", d.user_projects_dir());
-    print("user_publicshare_dir", d.user_publicshare_dir());
-    print("user_templates_dir", d.user_templates_dir());
-    print("site_data_dirs", d.site_data_dirs());
-    print("site_config_dirs", d.site_config_dirs());
-    print("site_cache_dir", d.site_cache_dir());
-    print("site_state_dir", d.site_state_dir());
-    print("site_log_dir", d.site_log_dir());
-    print("site_runtime_dir", d.site_runtime_dir());
-    print("site_bin_dir", d.site_bin_dir());
-    print("site_applications_dirs", d.site_applications_dirs());
-    print("site_fonts_dirs", d.site_fonts_dirs());
-    print("iter_fonts_dirs", d.iter_fonts_dirs());
+    show("user_data_dir", d.user_data_dir());
+    show("user_config_dir", d.user_config_dir());
+    show("user_cache_dir", d.user_cache_dir());
+    show("user_state_dir", d.user_state_dir());
+    show("user_log_dir", d.user_log_dir());
+    show("user_runtime_dir", d.user_runtime_dir());
+    show("user_preference_dir", d.user_preference_dir());
+    show("user_bin_dir", d.user_bin_dir());
+    show("user_applications_dir", d.user_applications_dir());
+    show("user_fonts_dir", d.user_fonts_dir());
+    show("user_documents_dir", d.user_documents_dir());
+    show("user_downloads_dir", d.user_downloads_dir());
+    show("user_pictures_dir", d.user_pictures_dir());
+    show("user_videos_dir", d.user_videos_dir());
+    show("user_music_dir", d.user_music_dir());
+    show("user_desktop_dir", d.user_desktop_dir());
+    show("user_projects_dir", d.user_projects_dir());
+    show("user_publicshare_dir", d.user_publicshare_dir());
+    show("user_templates_dir", d.user_templates_dir());
+    show("site_data_dirs", d.site_data_dirs());
+    show("site_config_dirs", d.site_config_dirs());
+    show("site_cache_dir", d.site_cache_dir());
+    show("site_state_dir", d.site_state_dir());
+    show("site_log_dir", d.site_log_dir());
+    show("site_runtime_dir", d.site_runtime_dir());
+    show("site_bin_dir", d.site_bin_dir());
+    show("site_applications_dirs", d.site_applications_dirs());
+    show("site_fonts_dirs", d.site_fonts_dirs());
+    show("iter_fonts_dirs", d.iter_fonts_dirs());
     return exit_ok;
 }

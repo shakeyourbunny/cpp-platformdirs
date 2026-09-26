@@ -9,6 +9,11 @@ project(cpp-platformdirs
     DESCRIPTION "Platform directory resolution for C++ (platformdirs API)"
 )
 
+# Release metadata next to the version: a release bumps these three lines together.
+set(CPP_PLATFORMDIRS_PART_NUMBER_BASE "SJ-PKG-0100")
+set(CPP_PLATFORMDIRS_RELEASE_DATE "20260926")
+set(CPP_PLATFORMDIRS_PART_NUMBER "${CPP_PLATFORMDIRS_PART_NUMBER_BASE}-${CPP_PLATFORMDIRS_RELEASE_DATE}")
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -24,7 +29,6 @@ endif()
 
 option(CPP_PLATFORMDIRS_BUILD_TESTS "Build unit tests" OFF)
 option(CPP_PLATFORMDIRS_BUILD_EXAMPLES "Build example programs" OFF)
-set(CPP_PLATFORMDIRS_PART_NUMBER "" CACHE STRING "Product number shown by --version (may be empty)")
 
 configure_file(cmake/version.h.in
     ${CMAKE_CURRENT_BINARY_DIR}/generated/platformdirs/version.h @ONLY)

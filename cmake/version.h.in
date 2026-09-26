@@ -12,8 +12,7 @@ namespace platformdirs {
 
 constexpr std::string_view version = "@PROJECT_VERSION@";
 
-// The product number of this library in its publisher's catalogue.
-// Empty when the build was configured without one.
+// The dated product number of this release in its publisher's catalogue.
 constexpr std::string_view part_number = "@CPP_PLATFORMDIRS_PART_NUMBER@";
 
 } // namespace platformdirs

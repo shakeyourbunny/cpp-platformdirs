@@ -13,11 +13,38 @@
 #include <atomic>
 #include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 
 using namespace platformdirs;
 
 namespace {
+
+// Joins on scope exit whatever was started, also when starting a later thread
+// throws; std::jthread would do this but libc++ 19 still makes it opt-in.
+class JoinedThreads {
+public:
+    JoinedThreads() = default;
+    JoinedThreads(const JoinedThreads&) = delete;
+    JoinedThreads& operator=(const JoinedThreads&) = delete;
+    ~JoinedThreads()
+    {
+        for (auto& t : threads_) {
+            if (t.joinable()) {
+                t.join();
+            }
+        }
+    }
+
+    template <typename Fn>
+    void start(Fn&& fn)
+    {
+        threads_.emplace_back(std::forward<Fn>(fn));
+    }
+
+private:
+    std::vector<std::thread> threads_;
+};
 
 std::vector<std::string> snapshot(const Dirs& d)
 {
@@ -61,9 +88,9 @@ TEST(Threads, shared_dirs_answers_the_same_from_every_thread)
     const std::vector<std::string> expected = snapshot(*d);
     std::atomic<int> mismatches = 0;
     {
-        std::vector<std::jthread> workers;
+        JoinedThreads workers;
         for (int t = 0; t < 32; ++t) {
-            workers.emplace_back([&] {
+            workers.start([&] {
                 for (int i = 0; i < 1000; ++i) {
                     if (snapshot(*d) != expected) {
                         mismatches.fetch_add(1);
@@ -84,9 +111,9 @@ TEST(Threads, native_sources_can_be_read_concurrently)
     const std::vector<std::string> expected = snapshot(*d);
     std::atomic<int> mismatches = 0;
     {
-        std::vector<std::jthread> workers;
+        JoinedThreads workers;
         for (int t = 0; t < 16; ++t) {
-            workers.emplace_back([&] {
+            workers.start([&] {
                 for (int i = 0; i < 200; ++i) {
                     if (snapshot(*d) != expected) {
                         mismatches.fetch_add(1);

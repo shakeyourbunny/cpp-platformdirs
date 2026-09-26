@@ -9,6 +9,7 @@
 #include <gtest/gtest.h>
 
 #include <string>
+#include <string_view>
 
 using namespace platformdirs;
 
@@ -17,10 +18,14 @@ TEST(Version, library_version_is_the_project_version)
     EXPECT_EQ(version, "0.1.0");
 }
 
-TEST(Version, part_number_is_a_string_even_when_unassigned)
+TEST(Version, part_number_is_the_dated_house_number)
 {
-    // Empty until the house allocates one; never a null pointer.
-    EXPECT_NE(part_number.data(), nullptr);
+    // SJ-PKG-0100 plus the release date; a stale build cache would leave it empty.
+    ASSERT_EQ(part_number.size(), std::string_view("SJ-PKG-0100-YYYYMMDD").size());
+    EXPECT_TRUE(part_number.starts_with("SJ-PKG-0100-"));
+    for (const char c : part_number.substr(std::string_view("SJ-PKG-0100-").size())) {
+        EXPECT_TRUE(c >= '0' && c <= '9') << part_number;
+    }
 }
 
 TEST(Platform, host_platform_is_a_compile_time_constant)
